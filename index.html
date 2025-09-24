@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>나의 똥 기록일기</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+        font-family: 'KkuBulLim';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.0/BMkkubulimTTF-Regular.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+        }
+
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+
+        body {
+            font-family: 'KkuBulLim';
+            background-color: #694817; color: white;
+            min-height: 100vh; padding: 40px 20px;}
+
+        .container {
+            max-width: 1300px; margin: 0 auto;}
+
+        .main-title {
+            padding-top: 10px;
+            font-size: 3rem; font-weight: 300;
+            text-align: center; margin-bottom: 20px;}
+
+        .subtitle {
+            font-size: 1.2rem; text-align: center;
+            margin-bottom: 60px; font-weight: 300;}
+
+        .image-placeholder {
+            width: 100%; max-width: 700px; height: 400px;
+            margin: 0 auto 40px auto;
+            display: flex; align-items: center; justify-content: center;}
+
+        .image-placeholder img {object-fit: cover;}
+
+        .memo-section {text-align: center; margin-bottom: 60px;}
+
+        .memo-title {font-size: 1.1rem; font-weight: 300;}
+
+        .input-section {display: flex; justify-content: space-between;
+            align-items: flex-end; gap: 30px; max-width: 1000px; margin: 0 auto;}
+
+        .input-group {flex: 1; text-align: center;}
+
+        .input-label {
+            display: block; font-size: 1.1rem;
+            margin-bottom: 15px; font-weight: 400;}
+
+        .input-field {width: 100%; max-width: 350px;
+            padding: 12px 16px; font-size: 1rem;
+            border: 1px solid white; background-color: white;
+            color: black; text-align: center;}
+
+        .input-field:focus {outline: none; border-color: #999;}
+
+        .color-input {width: 60px; height: 45px;
+            border: 1px solid white; background: white;
+            cursor: pointer; margin: 0 auto;}
+
+        select.input-field {
+            appearance: none; background-position: center;
+            background-repeat: no-repeat; background-size: 16px;}
+
+        .memo-group {flex: 2;}
+
+        .memo-input {max-width: 400px;}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">나의 똥 기록일기</h1>
+        <p class="subtitle">자고로 쾌변은 건강의 기본</p>
+
+        <div class="image-placeholder" style="font-size: 2rem;">
+            당신의 똥의 형태가 여기에 표시돼요!
+        </div>
+
+        <div class="memo-section">
+            <p class="memo-title" id="monitor">당신의 메모가 여기에 표시돼요!</p>
+        </div>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label class="input-label">날짜</label>
+                <input id="myDate" type="date" value="2025-09-17" class="input-field">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">색상</label>
+                <input id="myColor" type="color" value="#694817" class="color-input">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">모양</label>
+                <select id="shapeInput" class="input-field">
+                    <option value="poo_">이중 당신의 똥은?</option>    
+                    <option value="poo1">표면이 갈라진 소시지</option>
+                    <option value="poo2">뱀처럼 매끄러움</option>
+                    <option value="poo3">부드러운 방울 형태</option>
+                    <option value="poo4">죽 같은 형태</option>
+                    <option value="poo5">완전한 액체</option>
+                </select>
+            </div>
+
+            <div class="input-group memo-group">
+                <label class="input-label">메모</label>
+                <input id="myType" class="input-field" type="text" placeholder="오늘 먹은 음식, 컨디션 등을 기록해요.">
+            </div>
+        </div>
+    </div>
+
+<script>
+    myType.oninput = function(){monitor.innerHTML = this.value;}
+    myColor.oninput = function(){document.body.style.background = this.value;}
+    
+    const shapeInput = document.getElementById('shapeInput');
+    const imagePlaceholder = document.querySelector('.image-placeholder');
+    const flushSound = new Audio('toilet sound effect.mp3');
+
+    shapeInput.onchange = function() {
+        if (this.value !== 'poo_') {flushSound.currentTime = 0; flushSound.play();}
+
+        const dateText = myDate.value;
+    
+    switch(this.value) {
+        case 'poo1':
+            imagePlaceholder.innerHTML = `
+                <div style="text-align: center">
+                <img src="poo1.png"><p style="margin-top: 20px">${dateText}</p>
+                </div>`;
+            break;
+        case 'poo2':
+            imagePlaceholder.innerHTML = `
+                <div style="text-align: center">
+                <img src="poo2.png"><p style="margin-top: 20px">${dateText}</p>
+                </div>`;
+            break;
+        case 'poo3':
+            imagePlaceholder.innerHTML = `
+                <div style="text-align: center">
+                <img src="poo3.png"><p style="margin-top: 20px">${dateText}</p>
+                </div>`;
+            break;
+        case 'poo4':
+            imagePlaceholder.innerHTML = `
+                <div style="text-align: center">
+                <img src="poo4.png"><p style="margin-top: 20px">${dateText}</p>
+                </div>`;
+            break;        
+        case 'poo5':
+            imagePlaceholder.innerHTML = `
+                <div style="text-align: center">
+                <img src="poo5.png"><p style="margin-top: 20px">${dateText}</p>
+                </div>`;
+            break;
+        case 'poo_':
+            imagePlaceholder.innerHTML = `
+                <div style="text-align: center"><p>당신의 똥의 형태가 여기에 표시돼요!</p>
+                <p style="margin-top: 20px">${dateText}</p>
+                </div>`;
+            break;
+        }
+    };
+
+    myDate.onchange = function() {shapeInput.onchange();}
+
+</script>
+</body>
+</html>

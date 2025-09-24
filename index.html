@@ -123,8 +123,8 @@
                 <label class="input-label">모양</label>
                 <select id="shapeInput" class="input-field">
                     <option value="poo_">이중 당신의 똥은?</option>    
-                    <option value="poo1">표면이 갈라진 소시지</option>
-                    <option value="poo2">뱀처럼 매끄러움</option>
+                    <option value="poo1">뱀처럼 매끄러움</option>
+                    <option value="poo2">표면이 갈라진 소세지</option>
                     <option value="poo3">부드러운 방울 형태</option>
                     <option value="poo4">죽 같은 형태</option>
                     <option value="poo5">완전한 액체</option>
@@ -207,6 +207,12 @@
     const recordDisplay = document.getElementById('record-display');
 
     recordBtn.onclick = function() {
+        if (!myType.value) {
+            myType.style.backgroundColor = '#ffcdd2'; myType.placeholder = '메모를 입력해주세요!';
+            setTimeout(() => {
+                myType.style.backgroundColor = 'white'; myType.placeholder = '오늘 먹은 음식, 컨디션 등을 기록해요.';}, 2000);
+            return;}
+
         const pooRecord = document.createElement('span');
         pooRecord.textContent = '똥';
         recordDisplay.appendChild(pooRecord);
